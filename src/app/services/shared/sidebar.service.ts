@@ -8,10 +8,10 @@ export class SidebarService {
   icono: 'mdi mdi-gauge',
   submenu: [
     { titulo: 'Dashboard', url: '/dashboard'},
-    { titulo: 'ProgressBar', url: '/progress'},
-    { titulo: 'Gráficas', url: '/graficas1'},
-    { titulo: 'Promesas', url: '/promesas'},
-    { titulo: 'RXJS', url: '/Rxjs'}
+    // { titulo: 'ProgressBar', url: '/progress'},
+    // { titulo: 'Gráficas', url: '/graficas1'},
+    // { titulo: 'Promesas', url: '/promesas'},
+    // { titulo: 'RXJS', url: '/Rxjs'}
   ]
 },
 {
@@ -25,7 +25,6 @@ export class SidebarService {
     {titulo: 'Condiciones de pago', url: '/pagos'},
     {titulo: 'Facturacion', url: '/facturacion'},
     {titulo: 'Asientos contables', url: '/asientos'}
-
   ]
 }
   ];

@@ -20,6 +20,10 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 import { ArticulosComponent } from './Articulos/articulos/articulos.component';
 import { ModalArticulosComponent } from './Articulos/modal-articulos/modal-articulos.component';
+import { ClientesComponent } from './clientes/clientes/clientes.component';
+import { ModalClienteComponent } from './clientes/modal-cliente/modal-cliente.component';
+import { VendedoresComponent } from './vendedores/vendedores/vendedores.component';
+import { ModalVendedoresComponent } from './vendedores/modal-vendedores/modal-vendedores.component';
 
 
 
@@ -36,6 +40,10 @@ import { ModalArticulosComponent } from './Articulos/modal-articulos/modal-artic
     RegisterComponent,
     ArticulosComponent,
     ModalArticulosComponent,
+    ClientesComponent,
+    ModalClienteComponent,
+    VendedoresComponent,
+    ModalVendedoresComponent,
   ],
   imports: [
     BrowserModule,

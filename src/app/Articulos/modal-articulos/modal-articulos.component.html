@@ -3,32 +3,32 @@
         <div class="form-group row">
             <label for="artID" class="col-sm-2 col-form-label">ID:</label>
             <div class="col-xs-12">
-                <input formControlName="articuloID" name = "articuloID"  type="text" class="form-control" id="artID" placeholder="###">
+                <input formControlName="articuloID" name = "articuloID"  type="text" class="form-control" [(ngModel)]="_ArticulosService.selectedArticulo.articuloId" id="artID" placeholder="###">
             </div>
         </div>
         <div class="form-group row">
             <label for="artDescripcion" class="col-sm-2 col-form-label">Descripcion:</label>
             <div class="col-xs-12">
-                <input formControlName="descripcion" name = "descripcion" type="text" class="form-control" id="artDescripcion" placeholder="Este articulo es ...">
+                <input formControlName="descripcion" name = "descripcion" type="text" class="form-control" [(ngModel)]="_ArticulosService.selectedArticulo.descripcion" id="artDescripcion" placeholder="Este articulo es ...">
             </div>
         </div>
         <div class="form-group row">
             <label for="artCostUni" class="col-sm-2 col-form-label">Costo unitario:</label>
             <div class="col-xs-12">
-                <input formControlName="costoUnitario" name="costoUnitario" type="text" class="form-control" id="arrCostUni" placeholder="0.0">
+                <input formControlName="costoUnitario" name="costoUnitario" type="text" class="form-control" [(ngModel)]="_ArticulosService.selectedArticulo.costoUnitario" id="arrCostUni" placeholder="0.0">
             </div>
         </div>
         <div class="form-group row">
             <label for="artPrecioUni" class="col-sm-2 col-form-label">Precio unitario:</label>
             <div class="col-xs-12">
-                <input formControlName="precioUnitario" name="precioUnitario" type="text" class="form-control" id="artPrecioUni" placeholder="0.0">
+                <input formControlName="precioUnitario" name="precioUnitario" type="text" class="form-control" [(ngModel)]="_ArticulosService.selectedArticulo.precioUnitario" id="artPrecioUni" placeholder="0.0">
             </div>
         </div>
         <div class="form-group row">
             <label for="artEstado" class="col-sm-2 col-form-label">Estado:</label>
             <div class="col-xs-12">
                 <div class="checkbox checkbox-primary p-t-0">
-                    <input formControlName="estado"  name="estado" id="checkbox-signup" type="checkbox">
+                    <input formControlName="estado" [(ngModel)]="_ArticulosService.selectedArticulo.estado"  name="estado" id="checkbox-signup" type="checkbox">
                     <label for="checkbox-signup"> Activo</label>
                 </div>
             </div>

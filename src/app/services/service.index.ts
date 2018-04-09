@@ -7,3 +7,5 @@ export { SidebarService } from './shared/sidebar.service';
 export { UsuarioService } from './usuario/usuario.service';
 export {SubirArchivoService} from './subir-archivo/subir-archivo.service';
 export {ArticulosServiceService} from './../Articulos/articulos-service.service';
+export {ClientesServiceService} from './../clientes/clientes-service.service';
+export { VendedoresServiceService } from './../vendedores/vendedores-service.service';

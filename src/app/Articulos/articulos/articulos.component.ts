@@ -13,6 +13,7 @@ declare var sweetAlert: any;
   styles: []
 })
 export class ArticulosComponent implements OnInit {
+  articulos: Articulos[];
   cargando: boolean = true;
   constructor( public _ArticulosService: ArticulosServiceService,
                 public route: Router) { }
@@ -52,6 +53,7 @@ export class ArticulosComponent implements OnInit {
 
     showForEdit(art: Articulos) {
       this._ArticulosService.selectedArticulo = Object.assign({}, art);
+      console.log(this._ArticulosService.selectedArticulo);
       this.route.navigate(['/crearArticulo']);
     }
   }

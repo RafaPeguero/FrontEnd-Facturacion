@@ -1,5 +1,5 @@
 export class Articulos {
-  articuloId: string;
+  articuloId: number;
   descripcion: string;
   costoUnitario: number;
   precioUnitario: number;

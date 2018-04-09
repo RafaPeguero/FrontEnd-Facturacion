@@ -1,0 +1,50 @@
+<form #clientesForm="ngForm" [formGroup]="forma" (ngSubmit)="registrarCliente(forma)" ngNativeValidate  class="form-horizontal form-material">
+  <div class="card-body">
+      <div class="form-group row">
+          <label for="artID" class="col-sm-2 col-form-label">ID:</label>
+          <div class="col-xs-12">
+              <input formControlName="clienteID" name = "clienteID"  type="text" class="form-control" [(ngModel)]="_ClientesService.selectedCliente.clienteId" id="cliID" placeholder="###">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="artDescripcion" class="col-sm-2 col-form-label">Nombre del cliente:</label>
+          <div class="col-xs-12">
+              <input formControlName="nombre" name = "nombre" type="text" class="form-control" [(ngModel)]="_ClientesService.selectedCliente.nombre" id="cliNombre" placeholder="Este cliente es ...">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="artCostUni" class="col-sm-2 col-form-label">Cedula</label>
+          <div class="col-xs-12">
+              <input formControlName="cedula" name="cedula" type="text" class="form-control" [(ngModel)]="_ClientesService.selectedCliente.cedula" id="cliCedula" placeholder="Sin '-' ">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="artPrecioUni" class="col-sm-2 col-form-label">Cuenta contable:</label>
+          <div class="col-xs-12">
+              <input formControlName="cuentaContable" name="cuentaContable" type="text" class="form-control" [(ngModel)]="_ClientesService.selectedCliente.cuentaContable" id="cliCuentaContable" placeholder="###">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="artEstado" class="col-sm-2 col-form-label">Estado:</label>
+          <div class="col-xs-12">
+              <div class="checkbox checkbox-primary p-t-0">
+                  <input formControlName="estado"  name="estado" [(ngModel)]="_ClientesService.selectedCliente.estado" id="checkbox-signup" type="checkbox">
+                  <label for="checkbox-signup"> Activo</label>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="form-row">
+      <div class="form-group col-md-6">
+      <button type="submit" class="btn btn-primary">
+        Registrar
+      </button>
+    </div>
+    <div class="form-group col-md-6">
+        <button (click)="link()" type="button" class="btn btn-primary">
+            Volver
+          </button>
+    </div>
+
+  </div>
+</form>

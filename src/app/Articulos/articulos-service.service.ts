@@ -9,7 +9,13 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ArticulosServiceService {
-  selectedArticulo: Articulos;
+  selectedArticulo: Articulos = {
+    articuloId: 0,
+    descripcion: '',
+    costoUnitario: 0.0,
+    precioUnitario: 0.0,
+    estado: false
+  };
   articulos: Articulos;
   listaDeArticulos: Articulos[];
 

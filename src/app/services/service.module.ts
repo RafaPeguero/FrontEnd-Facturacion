@@ -9,9 +9,12 @@ import {
   UsuarioService,
   LoginGuardGuard,
   SubirArchivoService,
-  ArticulosServiceService
+  ArticulosServiceService,
+  ClientesServiceService,
+  VendedoresServiceService
 } from './service.index';
 import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
+
 
 
 
@@ -30,7 +33,9 @@ import { ModalUploadService } from '../components/modal-upload/modal-upload.serv
     LoginGuardGuard,
     SubirArchivoService,
     ModalUploadService,
-    ArticulosServiceService
+    ArticulosServiceService,
+    ClientesServiceService,
+    VendedoresServiceService
   ]
 })
 export class ServiceModule { }

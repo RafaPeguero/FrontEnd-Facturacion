@@ -1,0 +1,60 @@
+<div >
+  <div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+       <div class="alert alert-warning text-center">
+           <strong>Cargando</strong>
+           <br>
+           <i class="fa fa-refresh fa-spin fa-2x"></i>
+           <br>
+           <span>Espere por favor</span>;
+         </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando" >
+
+<div class="row">
+<div class="col-md-12">
+    <button (click) ="link()" type="button" class="btn btn-primary waves-effect waves-light m-r-10">
+        <i class="fa fa-plus"></i>  Agregar Cliente
+      </button>
+</div>
+</div>
+<br>
+<br>
+
+
+<table class="table table-sm table-hover">
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Cedula</th>
+    <th>Cuenta contable</th>
+    <th>Estado</th>
+    <th>Options</th>
+  </tr>
+</thead>
+<tbody>
+    <tr *ngFor ="let clientes of _ClientesService.listaDeClientes">
+        <td>{{clientes.clienteId}}</td>
+        <td>{{clientes.nombre}}</td>
+        <td>{{clientes.cedula}}</td>
+        <td>{{clientes.cuentaContable}}</td>
+        <td>{{clientes.estado}}</td>
+        <td>
+            <button (click)="showForEdit(clientes)"  class="btn btn-primary">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button (click)="BorrarCliente(clientes.clienteId)" class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+              </button>
+        </td>
+    </tr>
+</tbody>
+
+</table>
+
+</div>

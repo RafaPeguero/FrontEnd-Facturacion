@@ -11,7 +11,6 @@ import { Articulos } from './../articulos.model';
   templateUrl: './modal-articulos.component.html',
 })
 export class ModalArticulosComponent implements OnInit {
-
   forma: FormGroup;
 
   constructor(public route: Router,
@@ -21,14 +20,8 @@ export class ModalArticulosComponent implements OnInit {
     if (forma != null) {
       forma.reset();
     }
-    this._ArticulosService.selectedArticulo = {
-      articuloId: null,
-      descripcion: '',
-      costoUnitario: 0,
-      precioUnitario: 0,
-      estado: false
-    };
   }
+
 
   ngOnInit() {
     this.forma = new FormGroup({
@@ -38,6 +31,7 @@ export class ModalArticulosComponent implements OnInit {
       precioUnitario: new FormControl(null, Validators.required),
       estado: new FormControl(false)
     });
+
   }
 
   link() {
@@ -46,25 +40,30 @@ export class ModalArticulosComponent implements OnInit {
   }
 
   registrarArticulo( forma: FormGroup) {
-    if (forma.value.articuloID == null) {
-      if (!this.forma.invalid) {
-        this._ArticulosService.postArticulo(forma.value)
-          .subscribe(data => {
-            swal('Articulo registrado', '', 'success');
-            this.resetForm(forma);
-          });
-        } else {
-          swal('Error al registrar articulo', '', 'error');
-        }
+    // console.log( forma.value.articuloID );
+    // tslint:disable-next-line:triple-equals
+    if (forma.value.articuloID == this._ArticulosService.selectedArticulo.articuloId) {
 
-  } else {
-    this._ArticulosService.putArticulo(forma.value.articuloID, forma.value)
+      this._ArticulosService.putArticulo(forma.value.articuloID, forma.value)
     .subscribe(data => {
       swal('Articulo actualizado', '', 'success');
       this.resetForm(forma);
       this._ArticulosService.GetArticulos();
+      // tslint:disable:no-debugger
+
     });
-  }
+    // tslint:disable-next-line:no-debugger
+  } else {
+    if (!this.forma.invalid) {
+      this._ArticulosService.postArticulo(forma.value)
+        .subscribe(data => {
+          swal('Articulo registrado', '', 'success');
+          this.resetForm(forma);
+        });
+      } else {
+        swal('Error al registrar articulo', '', 'error');
+      }
+    }
   }
 
 }

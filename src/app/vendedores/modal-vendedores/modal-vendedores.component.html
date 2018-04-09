@@ -1,0 +1,45 @@
+<form #clientesForm="ngForm" [formGroup]="forma" (ngSubmit)="registrarVendedor(forma)" ngNativeValidate  class="form-horizontal form-material">
+  <div class="card-body">
+      <div class="form-group row">
+          <label for="venID" class="col-sm-2 col-form-label">ID:</label>
+          <div class="col-xs-12">
+              <input formControlName="vendedorId" name = "vendedorId"  type="text" class="form-control" [(ngModel)]="_VendedoresService.selectedVendedores.vendedorId" id="venID" placeholder="###">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="venNombre" class="col-sm-2 col-form-label">Nombre del vendedor:</label>
+          <div class="col-xs-12">
+              <input formControlName="nombre" name = "nombre" type="text" class="form-control" [(ngModel)]="_VendedoresService.selectedVendedores.nombre" id="venNombre" placeholder="Este vendedor es ...">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="artCostUni" class="col-sm-2 col-form-label">Comision</label>
+          <div class="col-xs-12">
+              <input formControlName="comision" name="comision" type="text" class="form-control" [(ngModel)]="_VendedoresService.selectedVendedores.comision" id="cliCedula" placeholder="###">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="artEstado" class="col-sm-2 col-form-label">Estado:</label>
+          <div class="col-xs-12">
+              <div class="checkbox checkbox-primary p-t-0">
+                  <input formControlName="estado"  name="estado" id="checkbox-signup" [(ngModel)]="_VendedoresService.selectedVendedores.estado" type="checkbox">
+                  <label for="checkbox-signup"> Activo</label>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="form-row">
+      <div class="form-group col-md-6">
+      <button [disabled]="forma.invalid" type="submit" class="btn btn-primary" >
+        Registrar
+      </button>
+    </div>
+    <div class="form-group col-md-6">
+        <button (click)="link()" type="button" class="btn btn-primary">
+            Volver
+          </button>
+    </div>
+
+  </div>
+</form>
+

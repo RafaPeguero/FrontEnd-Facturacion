@@ -1,0 +1,58 @@
+<div >
+  <div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+       <div class="alert alert-warning text-center">
+           <strong>Cargando</strong>
+           <br>
+           <i class="fa fa-refresh fa-spin fa-2x"></i>
+           <br>
+           <span>Espere por favor</span>;
+         </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando" >
+
+<div class="row">
+<div class="col-md-12">
+    <button (click) ="link()" type="button" class="btn btn-primary waves-effect waves-light m-r-10">
+        <i class="fa fa-plus"> </i> Agregar Vendedor 
+      </button>
+</div>
+</div>
+<br>
+<br>
+
+
+<table class="table table-sm table-hover">
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Comision</th>
+    <th>Estado</th>
+    <th>Options</th>
+  </tr>
+</thead>
+<tbody>
+    <tr *ngFor ="let vendedores of _VendedoresService.listaDeVendedores">
+        <td>{{vendedores.vendedorId}}</td>
+        <td>{{vendedores.nombre}}</td>
+        <td>{{vendedores.comision}}</td>
+        <td>{{vendedores.estado}}</td>
+        <td>
+            <button (click)="showForEdit(vendedores)"  class="btn btn-primary">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button (click)="BorrarVendedor(vendedores.vendedorId)" class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+              </button>
+        </td>
+    </tr>
+</tbody>
+
+</table>
+
+</div>
