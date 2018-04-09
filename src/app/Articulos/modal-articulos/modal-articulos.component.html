@@ -1,0 +1,54 @@
+<form #articulosForm="ngForm" [formGroup]="forma" (ngSubmit)="registrarArticulo(forma)" ngNativeValidate  class="form-horizontal form-material">
+    <div class="card-body">
+        <div class="form-group row">
+            <label for="artID" class="col-sm-2 col-form-label">ID:</label>
+            <div class="col-xs-12">
+                <input formControlName="articuloID" name = "articuloID"  type="text" class="form-control" id="artID" placeholder="###">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="artDescripcion" class="col-sm-2 col-form-label">Descripcion:</label>
+            <div class="col-xs-12">
+                <input formControlName="descripcion" name = "descripcion" type="text" class="form-control" id="artDescripcion" placeholder="Este articulo es ...">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="artCostUni" class="col-sm-2 col-form-label">Costo unitario:</label>
+            <div class="col-xs-12">
+                <input formControlName="costoUnitario" name="costoUnitario" type="text" class="form-control" id="arrCostUni" placeholder="0.0">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="artPrecioUni" class="col-sm-2 col-form-label">Precio unitario:</label>
+            <div class="col-xs-12">
+                <input formControlName="precioUnitario" name="precioUnitario" type="text" class="form-control" id="artPrecioUni" placeholder="0.0">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="artEstado" class="col-sm-2 col-form-label">Estado:</label>
+            <div class="col-xs-12">
+                <div class="checkbox checkbox-primary p-t-0">
+                    <input formControlName="estado"  name="estado" id="checkbox-signup" type="checkbox">
+                    <label for="checkbox-signup"> Activo</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-primary">
+          Registrar
+        </button>
+      </div>
+      <div class="form-group col-md-6">
+          <button (click)="link()" type="button" class="btn btn-primary">
+              Volver
+            </button>
+      </div>
+
+    </div>
+</form>
+
+
+
+
