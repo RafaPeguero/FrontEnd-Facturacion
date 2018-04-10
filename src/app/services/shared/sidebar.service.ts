@@ -22,9 +22,9 @@ export class SidebarService {
     {titulo: 'Articulos', url: '/articulos'},
     {titulo: 'Clientes', url: '/clientes'},
     {titulo: 'Vendedores', url: '/vendedores'},
-    {titulo: 'Condiciones de pago', url: '/pagos'},
+    // {titulo: 'Condiciones de pago', url: '/pagos'},
+    {titulo: 'Asientos contables', url: '/asientos'},
     {titulo: 'Facturacion', url: '/facturacion'},
-    {titulo: 'Asientos contables', url: '/asientos'}
   ]
 }
   ];

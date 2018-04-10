@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { ArticulosServiceService } from './../articulos-service.service';
 import { Articulos } from '../articulos.model';
 import { Router } from '@angular/router';
@@ -25,6 +25,7 @@ export class ArticulosComponent implements OnInit {
 
   link() {
     this.route.navigate(['/crearArticulo']);
+    this._ArticulosService.controlID = true;
   }
 
   mostrar() {
@@ -55,6 +56,7 @@ export class ArticulosComponent implements OnInit {
       this._ArticulosService.selectedArticulo = Object.assign({}, art);
       console.log(this._ArticulosService.selectedArticulo);
       this.route.navigate(['/crearArticulo']);
+      this._ArticulosService.controlID = false;
     }
   }
 

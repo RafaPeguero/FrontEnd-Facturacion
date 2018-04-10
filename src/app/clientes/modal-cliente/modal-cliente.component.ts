@@ -20,6 +20,13 @@ export class ModalClienteComponent implements OnInit {
   resetForm(forma?: FormGroup) {
     if (forma != null) {
       forma.reset();
+      this._ClientesService.selectedCliente = {
+        clienteId: 0,
+        nombre: '',
+        cedula: 0,
+        cuentaContable: 0,
+        estado: false
+      };
     }
   }
 
@@ -36,33 +43,38 @@ export class ModalClienteComponent implements OnInit {
   link() {
     this.route.navigate(['/clientes']);
     this._ClientesService.GetClientes();
+    this.resetForm(this.forma);
+    this._ClientesService.controlID = false;
   }
 
   registrarCliente( forma: FormGroup) {
-    console.log(forma.value);
-    console.log( forma.value.clienteID );
-    // tslint:disable-next-line:triple-equals
-    if (forma.value.clienteID == this._ClientesService.selectedCliente.clienteId) {
-      this._ClientesService.putCliente(forma.value.clienteID, forma.value)
-    .subscribe(data => {
-      swal('Cliente actualizado', '', 'success');
-      this.resetForm(forma);
-      this._ClientesService.GetClientes();
-      // tslint:disable:no-debugger
-
-    });
-    // tslint:disable-next-line:no-debugger
-  } else {
-    if (!this.forma.invalid) {
+    if (this._ClientesService.controlID === true) {
+      console.log('Estoy en el post');
+    try {
       this._ClientesService.postClientes(forma.value)
         .subscribe(data => {
           swal('Cliente registrado', '', 'success');
           this.resetForm(forma);
         });
-      } else {
+
+    } catch {
         swal('Error al registrar cliente', '', 'error');
       }
-    }
+
+    } else {
+
+      try {
+      console.log('Estoy en el put');
+      this._ClientesService.putCliente(forma.value.clienteID, forma.value)
+    .subscribe(data => {
+      swal('Articulo actualizado', '', 'success');
+      this.resetForm(forma);
+      this._ClientesService.GetClientes();
+    });
+      } catch {
+        swal('Error al actualizar cliente', '', 'error');
+      }
+  }
   }
 
 

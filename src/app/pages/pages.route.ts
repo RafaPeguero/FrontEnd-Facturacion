@@ -18,6 +18,9 @@ import {ClientesComponent} from './../clientes/clientes/clientes.component';
 import { ModalClienteComponent } from './../clientes/modal-cliente/modal-cliente.component';
 import { VendedoresComponent } from '../vendedores/vendedores/vendedores.component';
 import { ModalVendedoresComponent } from '../vendedores/modal-vendedores/modal-vendedores.component';
+import { AsientoContableComponent} from './../asientos/asiento-contable/asiento-contable.component';
+ import { AsientosModComponent } from './../asientos/asientos-mod/asientos-mod.component';
+
 
 
 
@@ -48,6 +51,8 @@ const pagesRoutes: Routes = [
     {path: 'crearCliente', component: ModalClienteComponent, data: {titulo: 'Mantenimiento de clientes'} },
     {path: 'vendedores', component: VendedoresComponent, data: {titulo: 'Lista de vendedores'} },
     {path: 'crearVendedor', component: ModalVendedoresComponent, data: {titulo: 'Mantenimiento de vendedores'} },
+    {path: 'asientos', component: AsientoContableComponent, data: {titulo: 'Asientos Contables'} },
+    {path: 'crearAsiento', component: AsientosModComponent, data: {titulo: 'Mantenimiento de Asientos contables'} },
     {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
   ]
 },

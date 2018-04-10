@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { ArticulosServiceService } from '../articulos-service.service';
 import { Articulos } from './../articulos.model';
+import { DISABLED } from '@angular/forms/src/model';
 
 
 @Component({
@@ -19,6 +20,13 @@ export class ModalArticulosComponent implements OnInit {
   resetForm(forma?: FormGroup) {
     if (forma != null) {
       forma.reset();
+      this._ArticulosService.selectedArticulo = {
+        articuloId: null,
+        descripcion: '',
+        costoUnitario: 0,
+        precioUnitario: 0,
+        estado: false
+    };
     }
   }
 
@@ -31,39 +39,44 @@ export class ModalArticulosComponent implements OnInit {
       precioUnitario: new FormControl(null, Validators.required),
       estado: new FormControl(false)
     });
-
   }
 
   link() {
     this.route.navigate(['/articulos']);
     this._ArticulosService.GetArticulos();
+    this.resetForm(this.forma);
+    this._ArticulosService.controlID = false;
   }
 
   registrarArticulo( forma: FormGroup) {
-    // console.log( forma.value.articuloID );
     // tslint:disable-next-line:triple-equals
-    if (forma.value.articuloID == this._ArticulosService.selectedArticulo.articuloId) {
-
-      this._ArticulosService.putArticulo(forma.value.articuloID, forma.value)
-    .subscribe(data => {
-      swal('Articulo actualizado', '', 'success');
-      this.resetForm(forma);
-      this._ArticulosService.GetArticulos();
-      // tslint:disable:no-debugger
-
-    });
-    // tslint:disable-next-line:no-debugger
-  } else {
-    if (!this.forma.invalid) {
+    if (this._ArticulosService.controlID === true) {
+      console.log('Estoy en el post');
+    try {
       this._ArticulosService.postArticulo(forma.value)
         .subscribe(data => {
           swal('Articulo registrado', '', 'success');
           this.resetForm(forma);
         });
-      } else {
+
+    } catch {
         swal('Error al registrar articulo', '', 'error');
       }
-    }
+
+    } else {
+
+      try {
+      console.log('Estoy en el put');
+      this._ArticulosService.putArticulo(forma.value.articuloID, forma.value)
+    .subscribe(data => {
+      swal('Articulo actualizado', '', 'success');
+      this.resetForm(forma);
+      this._ArticulosService.GetArticulos();
+    });
+      } catch {
+        swal('Error al actualizar articulo', '', 'error');
+      }
   }
 
+}
 }

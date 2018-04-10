@@ -24,6 +24,8 @@ import { ClientesComponent } from './clientes/clientes/clientes.component';
 import { ModalClienteComponent } from './clientes/modal-cliente/modal-cliente.component';
 import { VendedoresComponent } from './vendedores/vendedores/vendedores.component';
 import { ModalVendedoresComponent } from './vendedores/modal-vendedores/modal-vendedores.component';
+import { AsientoContableComponent } from './asientos/asiento-contable/asiento-contable.component';
+import { AsientosModComponent } from './asientos/asientos-mod/asientos-mod.component';
 
 
 
@@ -44,6 +46,8 @@ import { ModalVendedoresComponent } from './vendedores/modal-vendedores/modal-ve
     ModalClienteComponent,
     VendedoresComponent,
     ModalVendedoresComponent,
+    AsientoContableComponent,
+    AsientosModComponent,
   ],
   imports: [
     BrowserModule,

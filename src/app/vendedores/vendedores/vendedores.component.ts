@@ -25,6 +25,7 @@ export class VendedoresComponent implements OnInit {
   }
   link() {
     this.route.navigate(['/crearVendedor']);
+    this._VendedoresService.controlID = true;
   }
   mostrar() {
     this._VendedoresService.GetVendedores();
@@ -53,6 +54,7 @@ export class VendedoresComponent implements OnInit {
     showForEdit(ven: Vendedores) {
       this._VendedoresService.selectedVendedores = Object.assign({}, ven);
       this.route.navigate(['/crearVendedor']);
+      this._VendedoresService.controlID = false;
     }
 
 }

@@ -20,6 +20,12 @@ export class ModalVendedoresComponent implements OnInit {
     resetForm(forma?: FormGroup) {
       if (forma != null) {
         forma.reset();
+        this._VendedoresService.selectedVendedores = {
+          vendedorId: 0,
+          nombre: '',
+          comision: 0,
+          estado: false
+        };
       }
     }
 
@@ -35,29 +41,37 @@ export class ModalVendedoresComponent implements OnInit {
     link() {
       this.route.navigate(['/vendedores']);
       this._VendedoresService.GetVendedores();
+      this.resetForm(this.forma);
+      this._VendedoresService.controlID = false;
     }
 
     registrarVendedor( forma: FormGroup) {
-      console.log(forma.value);
-      console.log( forma.value.vendedorId );
-      // tslint:disable-next-line:triple-equals
-
-      if (forma.value.vendedorId = this._VendedoresService.selectedVendedores.vendedorId) {
-        this._VendedoresService.putVendedor(forma.value.vendedorId, forma.value)
-      .subscribe(data => {
-        swal('Cliente actualizado', '', 'success');
-        this.resetForm(forma);
-        this._VendedoresService.GetVendedores();
-
-      });
-
-    } else {
+      if (this._VendedoresService.controlID === true) {
+        console.log('Estoy en el post');
+      try {
         this._VendedoresService.postVendedor(forma.value)
           .subscribe(data => {
             swal('Vendedor registrado', '', 'success');
             this.resetForm(forma);
           });
-      }
+      } catch {
+          swal('Error al registrar vendedor', '', 'error');
+        }
+
+      } else {
+
+        try {
+        console.log('Estoy en el put');
+        this._VendedoresService.putVendedor(forma.value.vendedorId, forma.value)
+      .subscribe(data => {
+        swal('Vendedor actualizado', '', 'success');
+        this.resetForm(forma);
+        this._VendedoresService.GetVendedores();
+      });
+        } catch {
+          swal('Error al actualizar vendedor', '', 'error');
+        }
+    }
     }
 
 }

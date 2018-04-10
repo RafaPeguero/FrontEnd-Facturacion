@@ -11,6 +11,7 @@ import { Clientes } from '../clientes/clientes.model';
 
 @Injectable()
 export class VendedoresServiceService {
+  controlID: boolean = false;
   selectedVendedores: Vendedores = {
     vendedorId: 0,
     nombre: '',

@@ -26,6 +26,7 @@ export class ClientesComponent implements OnInit {
 
   link() {
     this.route.navigate(['/crearCliente']);
+    this._ClientesService.controlID = true;
   }
   mostrar() {
     this._ClientesService.GetClientes();
@@ -55,6 +56,7 @@ export class ClientesComponent implements OnInit {
       this._ClientesService.selectedCliente = Object.assign({}, cli);
       console.log(this._ClientesService.selectedCliente);
       this.route.navigate(['/crearCliente']);
+      this._ClientesService.controlID = false;
     }
 
 }

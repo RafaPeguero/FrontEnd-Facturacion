@@ -10,6 +10,7 @@ import { Clientes } from './clientes.model';
 
 @Injectable()
 export class ClientesServiceService {
+  controlID: boolean = false;
   selectedCliente: Clientes = {
     clienteId: 0,
     nombre: '',
@@ -18,18 +19,18 @@ export class ClientesServiceService {
     estado: false
   };
   clientes: Clientes;
-  listaDeClientes: Clientes[];
+  listaDeClientes: Clientes [];
 
   constructor(public http: Http,
     public router: Router) { }
 
 
     GetClientes() {
-      this.http.get('http://localhost:5000/api/Clientes')
+     return this.http.get('http://localhost:5000/api/Clientes')
      .map((data: Response) => {
-       return data.json() as Clientes[];
+        return data.json() as Clientes[];
      }).toPromise().then(x => {
-       this.listaDeClientes = x;
+     this.listaDeClientes = x;
      });
    }
 

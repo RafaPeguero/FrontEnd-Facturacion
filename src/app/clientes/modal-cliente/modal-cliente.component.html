@@ -1,9 +1,9 @@
-<form #clientesForm="ngForm" [formGroup]="forma" (ngSubmit)="registrarCliente(forma)" ngNativeValidate  class="form-horizontal form-material">
+<form #clientesForm="ngForm" [formGroup]="forma" (ngSubmit)="registrarCliente(forma)" ngNativeValidate  class="form-horizontal">
   <div class="card-body">
       <div class="form-group row">
           <label for="artID" class="col-sm-2 col-form-label">ID:</label>
           <div class="col-xs-12">
-              <input formControlName="clienteID" name = "clienteID"  type="text" class="form-control" [(ngModel)]="_ClientesService.selectedCliente.clienteId" id="cliID" placeholder="###">
+              <input [attr.disabled]="!_ClientesService.controlID ? '' : null " formControlName="clienteID" name = "clienteID"  type="text" class="form-control" [(ngModel)]="_ClientesService.selectedCliente.clienteId" id="cliID" placeholder="###">
           </div>
       </div>
       <div class="form-group row">
@@ -36,7 +36,7 @@
   </div>
   <div class="form-row">
       <div class="form-group col-md-6">
-      <button type="submit" class="btn btn-primary">
+      <button [disabled]="forma.invalid" type="submit" class="btn btn-primary">
         Registrar
       </button>
     </div>
