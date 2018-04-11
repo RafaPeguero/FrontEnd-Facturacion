@@ -31,9 +31,9 @@ export class ModalVendedoresComponent implements OnInit {
 
     ngOnInit() {
       this.forma = new FormGroup({
-        vendedorId: new FormControl(null, Validators.required),
+        vendedorId: new FormControl(null, [Validators.required, Validators.minLength(0)]),
         nombre: new FormControl(null, Validators.required),
-        comision: new FormControl(null, Validators.required),
+        comision: new FormControl(null, [Validators.required, Validators.minLength(0)]),
         estado: new FormControl(false)
       });
     }

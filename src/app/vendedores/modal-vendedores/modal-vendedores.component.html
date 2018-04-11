@@ -3,7 +3,7 @@
       <div class="form-group row">
           <label  for="venID" class="col-sm-2 col-form-label">ID:</label>
           <div class="col-xs-12">
-              <input [attr.disabled]="!_VendedoresService.controlID ? '' : null " formControlName="vendedorId" name = "vendedorId"  type="text" class="form-control" [(ngModel)]="_VendedoresService.selectedVendedores.vendedorId" id="venID" placeholder="###">
+              <input [attr.disabled]="!_VendedoresService.controlID ? '' : null " formControlName="vendedorId" name = "vendedorId"  type="number" class="form-control" [(ngModel)]="_VendedoresService.selectedVendedores.vendedorId" id="venID" placeholder="###">
           </div>
       </div>
       <div class="form-group row">
@@ -15,7 +15,7 @@
       <div class="form-group row">
           <label for="artCostUni" class="col-sm-2 col-form-label">Comision</label>
           <div class="col-xs-12">
-              <input  formControlName="comision" name="comision" type="text" class="form-control" [(ngModel)]="_VendedoresService.selectedVendedores.comision" id="cliCedula" placeholder="###">
+              <input  formControlName="comision" name="comision" type="number" class="form-control" [(ngModel)]="_VendedoresService.selectedVendedores.comision" id="cliCedula" placeholder="###">
           </div>
       </div>
       <div class="form-group row">

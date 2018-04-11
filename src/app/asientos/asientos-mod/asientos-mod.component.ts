@@ -8,7 +8,9 @@ import { ClientesServiceService} from './../../services/service.index';
 import { Clientes } from './../../clientes/clientes.model';
 
 
-
+/**
+ * @title Basic DateTime Picker
+ */
 
 
 @Component({
@@ -18,7 +20,6 @@ import { Clientes } from './../../clientes/clientes.model';
 })
 export class AsientosModComponent implements OnInit {
 
-  clientes: any[] = [];
 
   forma: FormGroup;
 
@@ -33,6 +34,7 @@ export class AsientosModComponent implements OnInit {
         asientoId: null,
         descripcion: '',
         clienteId: null,
+        cliente: null,
         cuenta: 0,
         tipoMovimiento: false,
         fechaAsiento: '',
@@ -45,19 +47,17 @@ export class AsientosModComponent implements OnInit {
 
   ngOnInit() {
     this.forma = new FormGroup({
-      asientoID: new FormControl(null, Validators.required),
+      asientoID: new FormControl(null, [Validators.required, Validators.minLength(0)]),
       descripcion: new FormControl(null, Validators.required),
-      clientes: new FormControl(null, Validators.required),
-      cuenta: new FormControl(null, Validators.required),
+      clienteId: new FormControl(null, [Validators.required, Validators.minLength(0)]),
+      cliente: new FormControl(null, [Validators.required, Validators.minLength(0)]),
+      cuenta: new FormControl(null, [Validators.required, Validators.minLength(0)]),
       tipoMovimiento: new FormControl(false),
       fechaAsiento: new FormControl(null, Validators.required),
-      montoAsiento: new FormControl(null, Validators.required),
+      montoAsiento: new FormControl(null, [Validators.required, Validators.minLength(0)]),
       estado: new FormControl(false)
     });
-    this._ClientesService.GetClientes().then((resp: any) => {
-      console.log(resp);
-    });
-    // console.log(this._ClientesService.GetClientes());
+    console.log(this._AsientossService.controlID);
   }
 
   link() {
@@ -70,6 +70,7 @@ export class AsientosModComponent implements OnInit {
   registrarAsiento( forma: FormGroup) {
     // console.log( forma.value.articuloID );
     // tslint:disable-next-line:triple-equals
+    console.log(forma);
     if (this._AsientossService.controlID === true) {
       console.log('Estoy en el post');
     try {
@@ -87,7 +88,7 @@ export class AsientosModComponent implements OnInit {
 
       try {
       console.log('Estoy en el put');
-      this._AsientossService.putAsiento(forma.value.asientoId, forma.value)
+      this._AsientossService.putAsiento(forma.value.asientoID, forma.value)
     .subscribe(data => {
       swal('Asiento actualizado', '', 'success');
       this.resetForm(forma);

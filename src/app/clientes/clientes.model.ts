@@ -1,7 +1,7 @@
 export class Clientes {
     clienteId: number;
     nombre: string;
-    cedula: number;
+    cedula: string;
     cuentaContable: number;
     estado: boolean;
 

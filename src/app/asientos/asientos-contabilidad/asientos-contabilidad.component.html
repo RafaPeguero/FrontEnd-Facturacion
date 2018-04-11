@@ -1,0 +1,49 @@
+<form #asientoForm="ngForm" [formGroup]="forma" (ngSubmit)="publicar(forma)" ngNativeValidate  class="form-horizontal">
+    <div class="card-body">
+        <div class="form-group row">
+            <label for="auxiliarID" class="col-sm-2 col-form-label">AuxiliarId:</label>
+            <div class="col-xs-10">
+                <input disabled formControlName="auxiliarID" name = "auxiliarID"  type="text" class="form-control" id="auxiliarID" placeholder="###">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="artDescripcion" class="col-sm-2 col-form-label">Descripcion:</label>
+            <div class="col-xs-12">
+                <input formControlName="descripcion" name = "descripcion" type="text" class="form-control" [(ngModel)]="_AsientossService.selectedAsiento.descripcion" id="artDescripcion" placeholder="Descripcion...">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="cuentaCredito" class="col-sm-2 col-form-label">Cuenta de credito:</label>
+            <div class="col-xs-10">
+                  <div class="col-xs-12">
+                      <input formControlName="cuentaCredito" formControlName="cuentaCredito" name = "cuentaCredito" type="number" class="form-control" [(ngModel)]="_AsientossService.selectedAsiento.cuenta" id="cuentaCredito" placeholder="###">
+                  </div>
+            </div>
+        </div>
+        <div class="form-group row">
+              <label for="cuentaDebito" class="col-sm-2 col-form-label">Cuenta de debito :</label>
+              <div class="col-xs-12">
+                  <input formControlName="cuentaDebito" name = "cuentaDebito" type="number" class="form-control" id="cuentaDebito" placeholder="###">
+              </div>
+        </div>
+          <div class="form-group row">
+              <label for="monto" class="col-sm-2 col-form-label">Monto total: </label>
+              <div class="col-xs-12">
+                  <input formControlName="monto" name = "monto" type="number" class="form-control" [(ngModel)]="_AsientossService.selectedAsiento.montoAsiento" id="monto" placeholder="###">
+              </div>
+          </div>
+  
+    <div class="form-row">
+        <div class="form-group col-md-6">
+        <button [disabled]="forma.invalid"  type="submit" class="btn btn-primary">
+          Publicar
+        </button>
+      </div>
+      <div class="form-group col-md-6">
+        <button  (click)="link()" type="button" class="btn btn-primary">
+          Volver
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

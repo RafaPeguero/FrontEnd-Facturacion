@@ -1,27 +1,32 @@
 <form #asientoForm="ngForm" [formGroup]="forma" (ngSubmit)="registrarAsiento(forma)" ngNativeValidate  class="form-horizontal">
   <div class="card-body">
       <div class="form-group row">
-          <label for="artID" class="col-sm-2 col-form-label">ID:</label>
+          <label for="astID" class="col-sm-2 col-form-label">ID:</label>
           <div class="col-xs-10">
-              <input [attr.disabled]="!_AsientossService.controlID ? '' : null " formControlName="asientoID" name = "asientoID"  type="text" class="form-control" [(ngModel)]="_AsientossService.selectedAsiento.asientoId" id="artID" placeholder="###">
+              <input [attr.disabled]="!_AsientossService.controlID ? '' : null " formControlName="asientoID" name = "asientoID"  type="text" class="form-control" [(ngModel)]="_AsientossService.selectedAsiento.asientoId" id="astID" placeholder="###">
           </div>
       </div>
       <div class="form-group row">
           <label for="artDescripcion" class="col-sm-2 col-form-label">Descripcion:</label>
           <div class="col-xs-12">
-              <input formControlName="descripcion" name = "descripcion" type="text" class="form-control" [(ngModel)]="_AsientossService.selectedAsiento.descripcion" id="artDescripcion" placeholder="Este articulo es ...">
+              <input formControlName="descripcion" name = "descripcion" type="text" class="form-control" [(ngModel)]="_AsientossService.selectedAsiento.descripcion" id="artDescripcion" placeholder="Descripcion...">
           </div>
       </div>
       <div class="form-group row">
-          <label for="artCostUni" class="col-sm-2 col-form-label">Clientes:</label>
+          <label for="clienteId" class="col-sm-2 col-form-label">Cliente:</label>
           <div class="col-xs-10">
-                
-                <select class="form-control" id="clientes" *ngFor="let clientes of clientes"   [(ngModel)]="_AsientossService.selectedAsiento.clienteId"  formControlName="clientes" name="clientes" > 
-                        <option selected> Elige un cliente </option>
-                        <option value="clientes.clienteId"> {{clientes.nombre}}</option> 
-                </select>
+                <div class="col-xs-12">
+                    <input formControlName="clienteId" formControlName="cliente" name = "clienteId" type="text" class="form-control" [(ngModel)]="_AsientossService.selectedAsiento.clienteId" id="clienteId" placeholder="###">
+                </div>
           </div>
       </div>
+      <div class="form-group row">
+            <label for="cuenta" class="col-sm-2 col-form-label">Cuenta:</label>
+            <div class="col-xs-12">
+                <input formControlName="cuenta" name = "cuenta" type="text" class="form-control" [(ngModel)]="_AsientossService.selectedAsiento.cuenta" id="cuenta" placeholder="###">
+            </div>
+        </div>
+
       <div class="form-group row">
           <label for="artPrecioUni" class="col-sm-2 col-form-label">Tipo Movimiento</label>
           <div class="checkbox checkbox-primary p-t-0">
@@ -30,13 +35,14 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="artPrecioUni" class="col-sm-2 col-form-label">Fecha Asiento </label>
-        <div class="col-xs-12">
-            <input formControlName="fechaAsiento" name="precioUnitario" type="text" class="form-control" [(ngModel)]="_AsientossService.selectedAsiento.fechaAsiento" id="artPrecioUni" placeholder="0.0">
-        </div>
+            <label for="fechaAsiento" class="col-sm-2 col-form-label" > Fecha </label>
+          <div class="col-xs-12">
+                <input type="text" formControlName="fechaAsiento" name="fechaAsiento" id="fechaAsiento" [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [(ngModel)]="_AsientossService.selectedAsiento.fechaAsiento" >
+                <owl-date-time #dt></owl-date-time>
+          </div>
     </div>
     <div class="form-group row">
-      <label for="artPrecioUni" class="col-sm-2 col-form-label">Monto Asiento</label>
+      <label for="precioUnitario" class="col-sm-2 col-form-label">Monto Asiento</label>
       <div class="col-xs-12">
           <input formControlName="montoAsiento" name="precioUnitario" type="text" class="form-control" [(ngModel)]="_AsientossService.selectedAsiento.montoAsiento" id="artPrecioUni" placeholder="0.0">
       </div>
@@ -54,7 +60,7 @@
   </div>
   <div class="form-row">
       <div class="form-group col-md-6">
-      <button [disabled]="forma.invalid" type="submit" class="btn btn-primary">
+      <button [disabled]="forma.invalid"  type="submit" class="btn btn-primary">
         Registrar
       </button>
     </div>
@@ -66,4 +72,5 @@
 
   </div>
 </form>
+
 

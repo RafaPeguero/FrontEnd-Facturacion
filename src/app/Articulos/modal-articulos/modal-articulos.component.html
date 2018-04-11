@@ -3,7 +3,7 @@
         <div  class="form-group row">
             <label  for="artID" class="col-sm-2 col-form-label">ID:</label>
             <div class="col-xs-12">
-                <input ng-model="_ArticulosService.controlID"   formControlName="articuloID" name = "articuloID"  type="text" [attr.disabled]="!_ArticulosService.controlID ? '' : null " class="form-control" [(ngModel)]="_ArticulosService.selectedArticulo.articuloId" id="artID" placeholder="###">
+                <input ng-model="_ArticulosService.controlID"   formControlName="articuloID" name = "articuloID"  type="number" [attr.disabled]="!_ArticulosService.controlID ? '' : null " class="form-control" [(ngModel)]="_ArticulosService.selectedArticulo.articuloId" id="artID" placeholder="###">
             </div>
         </div>
         <div class="form-group row">
@@ -15,13 +15,13 @@
         <div class="form-group row">
             <label for="artCostUni" class="col-sm-2 col-form-label">Costo unitario:</label>
             <div class="col-xs-12">
-                <input formControlName="costoUnitario" name="costoUnitario" type="text" class="form-control" [(ngModel)]="_ArticulosService.selectedArticulo.costoUnitario" id="arrCostUni" placeholder="0.0">
+                <input formControlName="costoUnitario" name="costoUnitario" type="number" class="form-control" [(ngModel)]="_ArticulosService.selectedArticulo.costoUnitario" id="arrCostUni" placeholder="0.0">
             </div>
         </div>
         <div class="form-group row">
             <label for="artPrecioUni" class="col-sm-2 col-form-label">Precio unitario:</label>
             <div class="col-xs-12">
-                <input formControlName="precioUnitario" name="precioUnitario" type="text" class="form-control" [(ngModel)]="_ArticulosService.selectedArticulo.precioUnitario" id="artPrecioUni" placeholder="0.0">
+                <input formControlName="precioUnitario" name="precioUnitario" type="number" class="form-control" [(ngModel)]="_ArticulosService.selectedArticulo.precioUnitario" id="artPrecioUni" placeholder="0.0">
             </div>
         </div>
         <div class="form-group row">

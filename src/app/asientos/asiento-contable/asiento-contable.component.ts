@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AsientosServiceService } from './../asientos-service.service';
-import { Asientos } from './../asientos.modal';
+import { Asientos, asientosToContabilidad } from './../asientos.modal';
 
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -59,18 +59,21 @@ export class AsientoContableComponent implements OnInit {
       this._AsientossService.selectedAsiento = Object.assign({}, ast);
       this.route.navigate(['/crearAsiento']);
       this._AsientossService.controlID = false;
+      console.log(this._AsientossService.selectedAsiento);
     }
 
     Publicar( ast: Asientos) {
       this._AsientossService.selectedAsiento = Object.assign({}, ast);
-      try {
-        this._AsientossService.postAsiento(this._AsientossService.selectedAsiento)
-        .subscribe(data => {
-          swal('Asiento enviado correctamente', '', 'success');
-      });
-    } catch {
-      swal('Error al publicar asiento', '', 'error');
-    }
+      this.route.navigate(['/asientosToContabilidad']);
+      this._AsientossService.controlID = false;
+    //   try {
+    //     this._AsientossService.postAsientoToContabilidad(this._AsientossService.selectedAsientoToContabilidad)
+    //     .subscribe(data => {
+    //       swal('Asiento enviado correctamente', '', 'success');
+    //   });
+    // } catch {
+    //   swal('Error al publicar asiento', '', 'error');
+    // }
 
   }
 }

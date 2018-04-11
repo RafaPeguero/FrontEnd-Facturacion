@@ -20,6 +20,8 @@ import { VendedoresComponent } from '../vendedores/vendedores/vendedores.compone
 import { ModalVendedoresComponent } from '../vendedores/modal-vendedores/modal-vendedores.component';
 import { AsientoContableComponent} from './../asientos/asiento-contable/asiento-contable.component';
  import { AsientosModComponent } from './../asientos/asientos-mod/asientos-mod.component';
+import { AsientosContabilidadComponent } from './../asientos/asientos-contabilidad/asientos-contabilidad.component';
+
 
 
 
@@ -53,6 +55,7 @@ const pagesRoutes: Routes = [
     {path: 'crearVendedor', component: ModalVendedoresComponent, data: {titulo: 'Mantenimiento de vendedores'} },
     {path: 'asientos', component: AsientoContableComponent, data: {titulo: 'Asientos Contables'} },
     {path: 'crearAsiento', component: AsientosModComponent, data: {titulo: 'Mantenimiento de Asientos contables'} },
+    {path: 'asientosToContabilidad', component: AsientosContabilidadComponent, data: {titulo: 'Asientos para Contabilidad'} },
     {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
   ]
 },

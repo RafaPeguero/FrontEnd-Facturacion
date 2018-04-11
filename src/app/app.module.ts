@@ -26,7 +26,9 @@ import { VendedoresComponent } from './vendedores/vendedores/vendedores.componen
 import { ModalVendedoresComponent } from './vendedores/modal-vendedores/modal-vendedores.component';
 import { AsientoContableComponent } from './asientos/asiento-contable/asiento-contable.component';
 import { AsientosModComponent } from './asientos/asientos-mod/asientos-mod.component';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AsientosContabilidadComponent } from './asientos/asientos-contabilidad/asientos-contabilidad.component';
 
 
 
@@ -48,6 +50,7 @@ import { AsientosModComponent } from './asientos/asientos-mod/asientos-mod.compo
     ModalVendedoresComponent,
     AsientoContableComponent,
     AsientosModComponent,
+    AsientosContabilidadComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,10 @@ import { AsientosModComponent } from './asientos/asientos-mod/asientos-mod.compo
     PagesModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceModule
+    ServiceModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

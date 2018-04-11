@@ -14,7 +14,7 @@ export class ClientesServiceService {
   selectedCliente: Clientes = {
     clienteId: 0,
     nombre: '',
-    cedula: 0,
+    cedula: '',
     cuentaContable: 0,
     estado: false
   };

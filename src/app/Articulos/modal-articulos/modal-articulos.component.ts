@@ -33,10 +33,10 @@ export class ModalArticulosComponent implements OnInit {
 
   ngOnInit() {
     this.forma = new FormGroup({
-      articuloID: new FormControl(null, Validators.required),
+      articuloID: new FormControl(null, [Validators.required, Validators.minLength(0)]),
       descripcion: new FormControl(null, Validators.required),
-      costoUnitario: new FormControl(null, Validators.required),
-      precioUnitario: new FormControl(null, Validators.required),
+      costoUnitario: new FormControl(null, [Validators.required, Validators.minLength(0)]),
+      precioUnitario: new FormControl(null, [Validators.required, Validators.minLength(0)]),
       estado: new FormControl(false)
     });
   }
