@@ -18,7 +18,7 @@ export class VendedoresServiceService {
     comision: 0.0,
     estado: false
   };
-  articulos: Vendedores;
+  vendedores: Vendedores;
   listaDeVendedores: Vendedores[];
 
   constructor(public http: Http,

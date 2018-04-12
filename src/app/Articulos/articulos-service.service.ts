@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Articulos } from './articulos.model';
 import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
-import { URL_SERVICIOS_ARTICULOS } from './../config/config';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/toPromise';

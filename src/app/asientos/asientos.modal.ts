@@ -2,7 +2,6 @@ export class Asientos {
     asientoId: number;
     descripcion: string;
     clienteId: number;
-    cliente: number;
     cuenta: number;
     tipoMovimiento: boolean;
     fechaAsiento: string;

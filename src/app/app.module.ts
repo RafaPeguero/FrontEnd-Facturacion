@@ -29,6 +29,10 @@ import { AsientosModComponent } from './asientos/asientos-mod/asientos-mod.compo
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AsientosContabilidadComponent } from './asientos/asientos-contabilidad/asientos-contabilidad.component';
+import { FacturacionComponent } from './facturacion/facturacion/facturacion.component';
+import { FacturacionModalComponent } from './facturacion/facturacion-modal/facturacion-modal.component';
+import { DetallesFacturaComponent } from './detalles/detalles-factura/detalles-factura.component';
+import { DetallesModalComponent } from './detalles/detalles-modal/detalles-modal.component';
 
 
 
@@ -51,6 +55,10 @@ import { AsientosContabilidadComponent } from './asientos/asientos-contabilidad/
     AsientoContableComponent,
     AsientosModComponent,
     AsientosContabilidadComponent,
+    FacturacionComponent,
+    FacturacionModalComponent,
+    DetallesFacturaComponent,
+    DetallesModalComponent,
   ],
   imports: [
     BrowserModule,

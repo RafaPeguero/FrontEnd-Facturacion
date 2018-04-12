@@ -1,0 +1,98 @@
+<form  #articulosForm="ngForm" [formGroup]="forma" (ngSubmit)="registrarFactura(forma)" ngNativeValidate  class="form-horizontal">
+  <div class="card-body">
+      <div  class="form-group row">
+          <label  for="facturaId" class="col-sm-2 col-form-label">ID:</label>
+          <div class="col-xs-12">
+              <input  formControlName="facturaId" name = "facturaId"  type="number" [attr.disabled]="!_FacturacionService ? '' : null " class="form-control" [(ngModel)]="_FacturacionService.selectedFactura.facturaId" id="facturaId" placeholder="###">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="vendedorId" class="col-sm-2 col-form-label">Vendedor ID:</label>
+          <div class="col-xs-12">
+              <input formControlName="vendedorId" name = "vendedorId" type="number" class="form-control" [(ngModel)]="_FacturacionService.selectedFactura.vendedorId" id="vendedorId" placeholder="###">
+          </div>
+      </div>
+      <div class="form-group row">
+        <label for="clienteId" class="col-sm-2 col-form-label">Cliente ID:</label>
+        <div class="col-xs-12">
+            <input formControlName="clienteId" name = "clienteId" type="number" class="form-control" [(ngModel)]="_FacturacionService.selectedFactura.clienteId" id="clienteId" placeholder="###">
+        </div>
+    </div>
+      <div class="form-group row">
+          <label for="artPrecioUni" class="col-sm-2 col-form-label">Tipo de pago:</label>
+          <div class="col-xs-12">
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="_FacturacionService.selectedFactura.tipoPago">
+              <option selected>Eliga un metodo de pago </option>
+              <option value="tarjeta de credito">Tarjeta de credito</option>
+              <option value=" contado">Contado</option>
+              <option value="cheque">cheque</option>
+            </select>
+          </div>
+      </div>
+      <div class="form-group row">
+        <label for="comentario" class="col-sm-2 col-form-label">Comentario:</label>
+        <div class="col-xs-12">
+            <input formControlName="comentario" name = "comentario" type="text" class="form-control" [(ngModel)]="_FacturacionService.selectedFactura.Comentario" id="comentario" placeholder="Comentario...">
+        </div>
+    </div>
+
+      <div class="form-group row">
+        <label for="fecha" class="col-sm-2 col-form-label" > Fecha </label>
+        <div class="col-xs-12">
+            <input type="text" formControlName="fecha" name="fecha" id="fecha" [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [(ngModel)]="_FacturacionService.selectedFactura.fecha" >
+            <owl-date-time #dt></owl-date-time>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="cantidad" class="col-sm-2 col-form-label">Cantidad:</label>
+        <div class="col-xs-12">
+            <input formControlName="cantidad" name = "cantidad" type="number" class="form-control" [(ngModel)]="_FacturacionService.selectedFactura.cantidad" id="cantidad" placeholder="###">
+        </div>
+        <div class="form-group row">
+          <label for="precioUnitario" class="col-sm-2 col-form-label">Precio unitario:</label>
+          <div class="col-xs-12">
+              <input formControlName="precioUnitario" name = "precioUnitario" type="number" class="form-control" [(ngModel)]="_FacturacionService.selectedFactura.precioUnitario" id="precioUnitario" placeholder="###">
+          </div>
+
+          <div class="form-group row">
+            <label for="inputGroupSelect02" class="col-sm-2 col-form-label">Clientes:</label>
+            <div class="col-xs-12">
+              <select formControlName="clientes" name="clientes" class="custom-select" id="inputGroupSelect02" [(ngModel)]="_FacturacionService.selectedFactura.vendedores">
+                <option selected>Eliga un cliente </option>
+                <option value=""></option>
+                <option value=" "></option>
+                <option value=""></option>
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="inputGroupSelect03" class="col-sm-2 col-form-label">Vendedores:</label>
+          <div class="col-xs-12">
+            <select formControlName="vendedores" name="vendedores" class="custom-select" id="inputGroupSelect03" [(ngModel)]="_FacturacionService.selectedFactura.clientes">
+              <option selected>Eliga un vendedor </option>
+              <option value=""></option>
+              <option value=" "></option>
+              <option value=""></option>
+            </select>
+          </div>
+      </div>
+
+  </div>
+  <div class="form-row">
+      <div class="form-group col-md-6">
+      <button [disabled]="forma.invalid" type="submit" class="btn btn-primary">
+        Registrar
+      </button>
+    </div>
+    <div class="form-group col-md-6">
+        <button (click)="link()" type="button" class="btn btn-primary">
+            Volver
+          </button>
+    </div>
+
+  </div>
+
+  </div>
+  </div>
+</form>

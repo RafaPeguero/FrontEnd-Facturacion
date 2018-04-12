@@ -17,7 +17,6 @@ export class AsientosServiceService {
     asientoId: 0,
     descripcion: '',
     clienteId: 0,
-    cliente: 0,
     cuenta: 0,
     tipoMovimiento: false,
     fechaAsiento: '',

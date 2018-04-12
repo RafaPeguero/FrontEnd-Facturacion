@@ -47,7 +47,7 @@ export class AsientosContabilidadComponent implements OnInit {
 
   publicar( forma: FormGroup) {
     try {
-      console.log('Estoy en el put');
+      console.log('Estoy en el post de Asientos para contabilidad');
       this._AsientossService.postAsientoToContabilidad(forma.value)
     .subscribe(data => {
       swal('Asiento publicado', '', 'success');

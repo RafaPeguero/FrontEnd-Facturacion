@@ -21,6 +21,10 @@ import { ModalVendedoresComponent } from '../vendedores/modal-vendedores/modal-v
 import { AsientoContableComponent} from './../asientos/asiento-contable/asiento-contable.component';
  import { AsientosModComponent } from './../asientos/asientos-mod/asientos-mod.component';
 import { AsientosContabilidadComponent } from './../asientos/asientos-contabilidad/asientos-contabilidad.component';
+import { FacturacionComponent } from '../facturacion/facturacion/facturacion.component';
+import { FacturacionModalComponent } from '../facturacion/facturacion-modal/facturacion-modal.component';
+import { DetallesFacturaComponent } from '../detalles/detalles-factura/detalles-factura.component';
+import { DetallesModalComponent } from '../detalles/detalles-modal/detalles-modal.component';
 
 
 
@@ -56,6 +60,10 @@ const pagesRoutes: Routes = [
     {path: 'asientos', component: AsientoContableComponent, data: {titulo: 'Asientos Contables'} },
     {path: 'crearAsiento', component: AsientosModComponent, data: {titulo: 'Mantenimiento de Asientos contables'} },
     {path: 'asientosToContabilidad', component: AsientosContabilidadComponent, data: {titulo: 'Asientos para Contabilidad'} },
+    {path: 'facturacion', component: FacturacionComponent, data: {titulo: 'Facturacion'} },
+    {path: 'crearFactura', component: FacturacionModalComponent, data: {titulo: 'Mantenimiento de facturas'} },
+    {path: 'detallesFactura', component: DetallesFacturaComponent, data: {titulo: 'Detalles factura'} },
+    {path: 'crearDetalles', component: DetallesModalComponent, data: {titulo: 'Mantenimiento  detalles de factura'} },
     {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
   ]
 },
