@@ -56,7 +56,7 @@ export class FacturacionComponent implements OnInit {
                 showForEdit(fac: Facturacion) {
                   this._FacturacionService.selectedFactura = Object.assign({}, fac);
                   console.log(this._FacturacionService.selectedFactura);
-                  this.route.navigate(['/crearArticulo']);
+                  this.route.navigate(['/crearFactura']);
                   this._FacturacionService.controlID = false;
                 }
 

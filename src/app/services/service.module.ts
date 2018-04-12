@@ -12,7 +12,8 @@ import {
   ArticulosServiceService,
   ClientesServiceService,
   VendedoresServiceService,
-  AsientosServiceService
+  AsientosServiceService,
+  FacturacionServiciosService
 } from './service.index';
 import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
 
@@ -37,7 +38,8 @@ import { ModalUploadService } from '../components/modal-upload/modal-upload.serv
     ArticulosServiceService,
     ClientesServiceService,
     VendedoresServiceService,
-    AsientosServiceService
+    AsientosServiceService,
+    FacturacionServiciosService
   ]
 })
 export class ServiceModule { }

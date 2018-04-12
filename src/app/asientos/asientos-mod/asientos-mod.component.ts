@@ -34,6 +34,7 @@ export class AsientosModComponent implements OnInit {
         asientoId: null,
         descripcion: '',
         clienteId: null,
+        clientes: 0,
         cuenta: 0,
         tipoMovimiento: false,
         fechaAsiento: '',
@@ -49,6 +50,7 @@ export class AsientosModComponent implements OnInit {
       asientoID: new FormControl(null, [Validators.required, Validators.minLength(0)]),
       descripcion: new FormControl(null, Validators.required),
       clienteId: new FormControl(null, [Validators.required, Validators.minLength(0)]),
+      clientes: new FormControl(null, [Validators.required, Validators.minLength(0)]),
       cuenta: new FormControl(null, [Validators.required, Validators.minLength(0)]),
       tipoMovimiento: new FormControl(false),
       fechaAsiento: new FormControl(null, Validators.required),
@@ -56,6 +58,7 @@ export class AsientosModComponent implements OnInit {
       estado: new FormControl(false)
     });
     console.log(this._AsientossService.controlID);
+    this._ClientesService.GetClientes();
   }
 
   link() {

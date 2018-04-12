@@ -16,11 +16,11 @@ export class AsientosContabilidadComponent implements OnInit {
 
   ngOnInit() {
     this.forma = new FormGroup({
-      auxiliarID: new FormControl(3, [Validators.required, Validators.minLength(0)]),
-      descripcion: new FormControl(null, Validators.required),
-      cuentaCredito: new FormControl(null, [Validators.required, Validators.minLength(0)]),
-      cuentaDebito: new FormControl(null, [Validators.required, Validators.minLength(0)]),
-      monto: new FormControl(null, [Validators.required, Validators.minLength(0)]),
+      AuxiliarId: new FormControl(3, [Validators.required, Validators.minLength(0)]),
+      AsientoContableDescripcion: new FormControl(null, Validators.required),
+      AsientoContableCuentaDebito: new FormControl(null, [Validators.required, Validators.minLength(0)]),
+      AsientoContableCuentaCredito: new FormControl(null, [Validators.required, Validators.minLength(0)]),
+      AsientoContableMonto: new FormControl(null, [Validators.required, Validators.minLength(0)]),
     });
   }
   // resetForm(forma?: FormGroup) {
@@ -48,6 +48,7 @@ export class AsientosContabilidadComponent implements OnInit {
   publicar( forma: FormGroup) {
     try {
       console.log('Estoy en el post de Asientos para contabilidad');
+      console.log( JSON.stringify( forma.value));
       this._AsientossService.postAsientoToContabilidad(forma.value)
     .subscribe(data => {
       swal('Asiento publicado', '', 'success');

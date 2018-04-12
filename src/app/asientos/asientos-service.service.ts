@@ -17,6 +17,7 @@ export class AsientosServiceService {
     asientoId: 0,
     descripcion: '',
     clienteId: 0,
+    clientes: 0,
     cuenta: 0,
     tipoMovimiento: false,
     fechaAsiento: '',
@@ -30,8 +31,8 @@ export class AsientosServiceService {
   selectedAsientoToContabilidad: asientosToContabilidad = {
     AuxiliarId: 3,
     AsientoContableDescripcion: '',
-    AsientoContableCuentaCredito: '',
-    AsientoContableCuentaDebito: '',
+    AsientoContableCuentaCredito: 0,
+    AsientoContableCuentaDebito: 0,
     AsientoContableMonto: 0.0
   };
 

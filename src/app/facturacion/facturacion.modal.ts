@@ -11,8 +11,8 @@ export class Facturacion {
     comentario: string;
     cantidad: number;
     precioUnitario: number;
-    clientes: Clientes;
-    vendedores: Vendedores;
-    detallesFactura: Detalles;
+    clientes: number;
+    vendedores: number;
+    detallesFactura: any [];
 
 }

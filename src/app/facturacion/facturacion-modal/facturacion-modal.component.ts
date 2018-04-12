@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators,  NgForm } from '@angular/forms';
 import { FacturacionServiciosService } from './../facturacion-servicios.service';
 import { Facturacion } from './../facturacion.modal';
 
 import { ClientesServiceService } from './../../clientes/clientes-service.service';
 import { VendedoresServiceService } from './../../vendedores/vendedores-service.service';
-import { DetallesServiceService } from './../../detalles/detalles-service.service';
+import { ArticulosServiceService } from '../../services/service.index';
+
 
 @Component({
   selector: 'app-facturacion-modal',
@@ -16,16 +16,18 @@ import { DetallesServiceService } from './../../detalles/detalles-service.servic
 })
 export class FacturacionModalComponent implements OnInit {
   forma: FormGroup;
+  forma2: FormGroup;
   constructor(public route: Router,
     public _FacturacionService: FacturacionServiciosService,
     public _ClientesService: ClientesServiceService,
     public _VendedoressService: VendedoresServiceService,
-    public _DetallesService: DetallesServiceService) { }
+    public _ArticulosService: ArticulosServiceService) { }
+
 
     link() {
-      this.route.navigate(['/articulos']);
+      this.route.navigate(['/facturacion']);
       this._FacturacionService.GetFacturas();
-      // this.resetForm(this.forma);
+      this.resetForm(this.forma);
       this._FacturacionService.controlID = false;
     }
     resetForm(forma?: FormGroup) {
@@ -40,9 +42,9 @@ export class FacturacionModalComponent implements OnInit {
           comentario: '',
           cantidad: 0,
           precioUnitario: 0.0,
-          clientes: this._ClientesService.clientes,
-          vendedores: this._VendedoressService.vendedores,
-          detallesFactura: this._DetallesService.detalles
+          clientes: 0,
+          vendedores: 0,
+          detallesFactura: []
       };
       }
     }
@@ -57,14 +59,21 @@ export class FacturacionModalComponent implements OnInit {
       comentario: new FormControl(null, Validators.required),
       cantidad: new FormControl(null, [Validators.required, Validators.minLength(0)]),
       precioUnitario: new FormControl(null, [Validators.required, Validators.minLength(0)]),
-      clientes: new FormControl(this._FacturacionService.selectedFactura.clientes, Validators.required),
-      vendedores: new FormControl(this._FacturacionService.selectedFactura.vendedores, Validators.required),
-      detallesFactura: new FormControl(this._FacturacionService.selectedFactura.detallesFactura, Validators.required),
+      clientes: new FormControl(null, Validators.required),
+      vendedores: new FormControl(null, Validators.required),
+      detallesFactura: new FormControl(null, Validators.required),
+      articuloId: new FormControl(null, [Validators.required, Validators.minLength(0)])
     });
+
+    this._ClientesService.GetClientes();
+    this._VendedoressService.GetVendedores();
+    this._FacturacionService.GetDetalles();
+    this._ArticulosService.GetArticulos();
   }
 
 
   registrarFactura( forma: FormGroup) {
+    console.log(this.forma.value);
   }
 
 

@@ -29,7 +29,7 @@ export class VendedoresServiceService {
      .map((data: Response) => {
        return data.json() as Vendedores[];
      }).toPromise().then(x => {
-       this.listaDeVendedores = x;
+        return this.listaDeVendedores = x;
      });
    }
 

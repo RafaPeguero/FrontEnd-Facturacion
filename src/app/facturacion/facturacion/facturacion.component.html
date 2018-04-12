@@ -41,11 +41,11 @@
 <tbody>
     <tr *ngFor ="let factura of _FacturacionService.listaDeFacturas">
         <td>{{factura.facturaId}}</td>
-        <td>{{factura.clientes}}</td>
-        <td>{{factura.vendedores}}</td>
+        <td>{{factura.clienteId}}</td>
+        <td>{{factura.vendedorId}}</td>
         <td>{{factura.fecha}}</td>
         <td>{{factura.tipoPago}}</td>
-        <td>{{factura.Comentario}}</td>
+        <td>{{factura.comentario}}</td>
         <td>{{factura.detallesFactura}}</td>
         <td>
             <button (click)="showForEdit(factura)"  class="btn btn-primary">

@@ -6,23 +6,33 @@ import {
   RequestOptions,
   RequestMethod
 } from '@angular/http';
-import { URL_SERVICIOS_ARTICULOS } from './../config/config';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import { Facturacion } from './facturacion.modal';
 
-import { Clientes } from '../clientes/clientes.model';
-import { Vendedores } from '../vendedores/vendedores.modal';
-import { Detalles } from '../detalles/detalles.modal';
-
 import { ClientesServiceService } from './../clientes/clientes-service.service';
 import { VendedoresServiceService } from './../vendedores/vendedores-service.service';
-import { DetallesServiceService } from './../detalles/detalles-service.service';
+
+import { Detalles } from './../detalles/detalles.modal';
+import { ArticulosServiceService } from './../Articulos/articulos-service.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable()
 export class FacturacionServiciosService {
+  factura: Facturacion;
+  listaDeFacturas: Facturacion[];
+  // DETALLES SERVICES DECLARABLES
+  selectedDetalle: Detalles = {
+    detalleId: 0,
+    articuloId: 0,
+    facturaId: 0,
+    factura: this.factura ,
+    articulo: this._ArticulosService.articulos
+  };
+  detalles: Detalles;
+  listaDetalles: Detalles[];
   controlID: boolean = false;
   selectedFactura: Facturacion = {
     facturaId: 0,
@@ -33,18 +43,18 @@ export class FacturacionServiciosService {
     comentario: '',
     cantidad: 0,
     precioUnitario: 0.0,
-    clientes: this._ClientesService.clientes,
-    vendedores: this._VendedoressService.vendedores,
-    detallesFactura: this._DetallesService.detalles
+    clientes: 0,
+    vendedores: 0,
+    detallesFactura: []
   };
-  factura: Facturacion;
-  listaDeFacturas: Facturacion[];
+
+
   constructor(
     public http: Http,
     public router: Router,
     public _ClientesService: ClientesServiceService,
     public _VendedoressService: VendedoresServiceService,
-    public _DetallesService: DetallesServiceService
+    public _ArticulosService: ArticulosServiceService
   ) {}
 
   GetFacturas() {
@@ -56,6 +66,7 @@ export class FacturacionServiciosService {
       .toPromise()
       .then(x => {
         this.listaDeFacturas = x;
+        console.log('estoy aqui');
       });
   }
 
@@ -87,6 +98,50 @@ export class FacturacionServiciosService {
     });
     return this.http
       .put('http://localhost:5000/api/Facturacion/' + id, body, requestOptions)
+      .map(res => res.json());
+  }
+
+  // ===================================================== DETALLES SERVICE=======================================
+  GetDetalles() {
+    this.http
+      .get('http://localhost:5000/api/Detallesfacturas')
+      .map((data: Response) => {
+        return data.json() as Detalles[];
+      })
+      .toPromise()
+      .then(x => {
+        this.listaDetalles = x;
+      });
+  }
+
+  postDetalles(det: Detalles) {
+    let body = JSON.stringify(det);
+    let headerOptions = new Headers({ 'Content-Type': 'application/json' });
+    let requestOptions = new RequestOptions({
+      method: RequestMethod.Post,
+      headers: headerOptions
+    });
+    return this.http
+      .post('http://localhost:5000/api/Detallesfacturas', body, requestOptions)
+      .map(x => {
+        x.json();
+      });
+  }
+
+  deleteDetalles(id: number) {
+    return this.http
+      .delete('http://localhost:5000/api/Detallesfacturas/' + id)
+      .map(res => res.json());
+  }
+  putDetalles(id, art) {
+    let body = JSON.stringify(art);
+    let headerOptions = new Headers({ 'Content-Type': 'application/json' });
+    let requestOptions = new RequestOptions({
+      method: RequestMethod.Put,
+      headers: headerOptions
+    });
+    return this.http
+      .put('http://localhost:5000/api/Detallesfacturas/' + id, body, requestOptions)
       .map(res => res.json());
   }
 }
