@@ -35,7 +35,6 @@
     <th>Fecha</th>
     <th>Tipo de pago</th>
     <th>Comentario</th>
-    <th>Detalles Factura</th>
   </tr>
 </thead>
 <tbody>
@@ -46,7 +45,6 @@
         <td>{{factura.fecha}}</td>
         <td>{{factura.tipoPago}}</td>
         <td>{{factura.comentario}}</td>
-        <td>{{factura.detallesFactura}}</td>
         <td>
             <button (click)="showForEdit(factura)"  class="btn btn-primary">
                 <i class="fa fa-edit"></i>
@@ -55,6 +53,56 @@
                   <i class="fa fa-trash-o"></i>
               </button>
         </td>
+    </tr>
+</tbody>
+
+</table>
+
+</div>
+
+<!-- TABLA DE DETALLES!!!!-->
+
+<div class="row animated fadeIn" *ngIf="!cargando" >
+
+<!-- <div class="row">
+<div class="col-md-12">
+    <button (click) ="link()" type="button" class="btn btn-primary waves-effect waves-light m-r-10">
+        <i class="fa fa-plus"></i> Agregar Factura
+      </button>
+</div>
+</div> -->
+<br>
+<br>
+<br>
+<h1> Detalles factura</h1>
+<br>
+<br>
+
+
+
+
+
+<table class="table table-sm table-hover">
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>articulo ID</th>
+    <th>factura</th>
+  </tr>
+</thead>
+<tbody>
+    <tr *ngFor ="let detalles of _FacturacionService.listaDetalles">
+        <td>{{detalles.detalleId}}</td>
+        <td>{{detalles.articuloId}}</td>
+        <td>{{detalles.facturaId}}</td>
+        <!-- <td>
+            <button (click)="showForEdit(factura)"  class="btn btn-primary">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button (click)="BorrarFactura(detalles.facturaId)" class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+              </button>
+        </td> -->
     </tr>
 </tbody>
 

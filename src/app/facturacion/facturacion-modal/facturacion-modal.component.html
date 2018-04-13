@@ -1,4 +1,4 @@
-<form  #articulosForm="ngForm" [formGroup]="forma" (ngSubmit)="registrarFactura(forma)" ngNativeValidate  class="form-horizontal">
+<form  #articulosForm="ngForm" [formGroup]="forma" (ngSubmit)="registrarFactura(forma, forma2)" ngNativeValidate  class="form-horizontal">
   <div class="card-body">
     
       <div  class="form-group row">
@@ -81,24 +81,43 @@
           </div>
         </div>
 
-        <div class="form-group row">
+        <!-- <div class="form-group row">
             <label for="inputGroupSelect04" class="col-sm-2 col-form-label">Detalles Factura:</label>
             <div class="col-xs-12">
               <select  formControlName="detallesFactura" name="detallesFactura" class="custom-select" id="inputGroupSelect04" [(ngModel)]="_FacturacionService.selectedFactura.detallesFactura">
-                <option *ngFor="let detalles of _FacturacionService.listaDetalles" [value]="detalles.detalleId" >{{detalles.detalleId}} </option>
+                <option *ngFor="let detalles of _FacturacionService.listaDetalles" [value]=detalles.detalleId >{{detalles.detalleId}} </option>
               </select>
             </div>
+        </div> -->
+
+            
+
         </div>
 
+        <form [formGroup]="forma2" ngNativeValidate  class="form-horizontal">
+            <div  class="form-group row">
+                <label  for="detalleId" class="col-sm-2 col-form-label">Detalle ID:</label>
+                <div class="col-xs-12">
+                    <input  formControlName="detalleId" name = "detalleId"  type="number" readonly class="form-control" [(ngModel)]="_FacturacionService.selectedFactura.facturaId" id="facturaId" placeholder="###">
+                </div>
+            </div>
             <div class="form-group row">
                 <label for="inputGroupSelect05" class="col-sm-2 col-form-label">Articulos:</label>
                 <div class="col-xs-12">
-                  <select  formControlName="articuloId" name="articuloId" class="custom-select" id="inputGroupSelect05" [(ngModel)]="_FacturacionService.selectedDetalle.articuloId">
-                    <option *ngFor="let articulos of _ArticulosService.listaDeArticulos" [value]="articulos.articuloId" >{{articulos.descripcion}} </option>
-                  </select>
+                    <select  formControlName="articulo" name="articulo" class="custom-select" id="inputGroupSelect05" [(ngModel)]="_FacturacionService.selectedDetalle.articulo">
+                        <option *ngFor="let articulos of _ArticulosService.listaDeArticulos" [value]="articulos.articuloId" >{{articulos.descripcion}} </option>
+                      </select>
+                      <input  formControlName="articuloId" name = "articuloId"  type="number" readonly class="form-control" [ngModel]="forma2.controls.articulo.value" id="articuloId" placeholder="###" >
+                 
                 </div>
             </div>
-        </div>
+            <div  class="form-group row">
+                <label  for="facturaId" class="col-sm-2 col-form-label">Factura ID:</label>
+                <div class="col-xs-12">
+                    <input  formControlName="facturaId" name = "facturaId"  type="number" readonly class="form-control" [(ngModel)]="_FacturacionService.selectedFactura.facturaId" id="facturaId" placeholder="###">
+                </div>
+            </div>
+        </form>
 
 
 
@@ -106,8 +125,7 @@
   
   <div class="form-row">
       <div class="form-group col-md-6">
-          <!-- [disabled]="forma.invalid" -->
-      <button  type="submit" class="btn btn-primary">
+      <button [disabled]="forma.invalid && forma2.invalid"  type="submit" class="btn btn-primary">
         Registrar
       </button>
     </div>

@@ -81,7 +81,7 @@ export class AsientosServiceService {
 
    postAsientoToContabilidad(ast: asientosToContabilidad) {
     let body = JSON.stringify(ast);
-    let headerOptions = new Headers({'Content-Type': 'application/json'});
+    let headerOptions = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
     let requestOptions = new RequestOptions({method : RequestMethod.Post, headers : headerOptions});
     return this.http.post('http://contabilidadpropietaria.azurewebsites.net/api/asientocontable/external', body, requestOptions).map(x => {
       x.json();

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators,  NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators,  NgForm, FormsModule } from '@angular/forms';
 import { FacturacionServiciosService } from './../facturacion-servicios.service';
 import { Facturacion } from './../facturacion.modal';
 
@@ -44,7 +44,6 @@ export class FacturacionModalComponent implements OnInit {
           precioUnitario: 0.0,
           clientes: 0,
           vendedores: 0,
-          detallesFactura: []
       };
       }
     }
@@ -60,9 +59,14 @@ export class FacturacionModalComponent implements OnInit {
       cantidad: new FormControl(null, [Validators.required, Validators.minLength(0)]),
       precioUnitario: new FormControl(null, [Validators.required, Validators.minLength(0)]),
       clientes: new FormControl(null, Validators.required),
-      vendedores: new FormControl(null, Validators.required),
-      detallesFactura: new FormControl(null, Validators.required),
-      articuloId: new FormControl(null, [Validators.required, Validators.minLength(0)])
+      vendedores: new FormControl(null, Validators.required)
+    });
+
+    this.forma2 = new FormGroup({
+      detalleId: new FormControl(null, [Validators.required, Validators.minLength(0)]),
+      articuloId: new FormControl(null, [Validators.required, Validators.minLength(0)]),
+      facturaId: new FormControl(null, [Validators.required, Validators.minLength(0)]),
+      articulo: new FormControl(null, Validators.required)
     });
 
     this._ClientesService.GetClientes();
@@ -72,8 +76,21 @@ export class FacturacionModalComponent implements OnInit {
   }
 
 
-  registrarFactura( forma: FormGroup) {
-    console.log(this.forma.value);
+  registrarFactura( forma: FormGroup, forma2: FormGroup) {
+    try {
+      this._FacturacionService.postDetalles(forma2.value).subscribe( () => console.log('REGISTRADO'));
+      this._FacturacionService.postFactura(forma.value).subscribe(
+        data => {
+          swal('Factura registrada', '', 'success');
+          this.forma.reset();
+          this.forma2.reset();
+          this._FacturacionService.GetFacturas();
+          this._FacturacionService.GetFacturas();
+        }
+      );
+    } catch {
+      swal('Error al crear factura', '', 'error');
+    }
   }
 
 

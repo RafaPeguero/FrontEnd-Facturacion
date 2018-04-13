@@ -5,6 +5,6 @@ export class Detalles {
   facturaId: number;
   articuloId: number;
   factura: Facturacion;
-  articulo: Articulos;
+  articulo: string;
 
 }

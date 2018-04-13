@@ -13,6 +13,4 @@ export class Facturacion {
     precioUnitario: number;
     clientes: number;
     vendedores: number;
-    detallesFactura: any [];
-
 }

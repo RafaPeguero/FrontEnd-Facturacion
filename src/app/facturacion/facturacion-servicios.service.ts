@@ -21,6 +21,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable()
 export class FacturacionServiciosService {
+
+
   factura: Facturacion;
   listaDeFacturas: Facturacion[];
   // DETALLES SERVICES DECLARABLES
@@ -29,7 +31,7 @@ export class FacturacionServiciosService {
     articuloId: 0,
     facturaId: 0,
     factura: this.factura ,
-    articulo: this._ArticulosService.articulos
+    articulo: ''
   };
   detalles: Detalles;
   listaDetalles: Detalles[];
@@ -44,8 +46,7 @@ export class FacturacionServiciosService {
     cantidad: 0,
     precioUnitario: 0.0,
     clientes: 0,
-    vendedores: 0,
-    detallesFactura: []
+    vendedores: 0
   };
 
 
@@ -66,7 +67,6 @@ export class FacturacionServiciosService {
       .toPromise()
       .then(x => {
         this.listaDeFacturas = x;
-        console.log('estoy aqui');
       });
   }
 
